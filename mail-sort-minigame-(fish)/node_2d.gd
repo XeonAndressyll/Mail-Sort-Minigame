@@ -4,12 +4,19 @@ extends Node2D
 @onready var button2 : Button = $Button2
 @onready var target : Label = $TargetIcon
 
+const target_pool : Array= ["apple", "peen", "bussy", "box", "snatch", "goblin"]
+
 
 func _ready() -> void:
 	button.pressed.connect(button_press.bind(button))
 	button2.pressed.connect(button_press.bind(button2))
 	
-	var target_pool : Array= ["apple", "peen", "bussy", "box", "snatch", "goblin"]
+	$AcceptDialog.confirmed.connect(reset)
+	
+	
+	reset()
+
+func reset() -> void: 
 	target.text = target_pool.pick_random()
 	
 	var target_wrongpool : Array= []
@@ -39,8 +46,6 @@ func _ready() -> void:
 			button_pool[i].text = target_wrongpool.pick_random()
 		print(button_pool[i])
 	
-	
-	
 func button_press(pressed_button : Button) -> void :
 	if pressed_button.get_meta("correct_button"):
 		$AcceptDialog.dialog_text = "Gud"
@@ -50,8 +55,10 @@ func button_press(pressed_button : Button) -> void :
 		print(pressed_button.get_meta("correct button"))
 
 	$AcceptDialog.popup_centered()
+	
 
 	print("It got pressed")
+	
 
 
 
