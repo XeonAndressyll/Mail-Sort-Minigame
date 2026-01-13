@@ -24,7 +24,7 @@ script = ExtResource("2_ueupq")
 [node name="TargetIcon" type="Label" parent="."]
 offset_left = 223.0
 offset_top = 82.0
-offset_right = 263.0
+offset_right = 310.0
 offset_bottom = 105.0
 text = "Target Icon"
 

@@ -2,19 +2,55 @@ extends Node2D
 
 @onready var button : Button = $Button
 @onready var button2 : Button = $Button2
+
 @onready var target : Label = $TargetIcon
 
-const target_pool : Array= ["apple", "peen", "bussy", "box", "snatch", "goblin"]
+var FishData_scene: PackedScene = load("res://fish_data.tscn")
+var FishData: Node = FishData_scene.instantiate()
+
+var _FishButtonScene : PackedScene = load("res://FishButton.tscn")
+var _FishButton : TextureButton = _FishButtonScene.instantiate()
+
+
+var target_pool : Array= []
+var file_location : String = "res://Fish-type-mailslot.txt"
 
 
 func _ready() -> void:
 	button.pressed.connect(button_press.bind(button))
 	button2.pressed.connect(button_press.bind(button2))
 	
-	$AcceptDialog.confirmed.connect(reset)
+	add_child(FishData)
+	FishData.owner = self
 	
+	add_child(_FishButton)
+	_FishButton.owner = self
+	_FishButton.position = Vector2(200, 200)
+	_FishButton.scale = Vector2(8, 8)
+	
+	$AcceptDialog.confirmed.connect(reset)
+
+	fish_get_data()
+
+	target_pool = $FishData.get_meta("TotalFishArray")
+	
+	print("What node.2d thinks TotalFishArray is: ", $FishData.get_meta("TotalFishArray"))
 	
 	reset()
+
+func fish_get_data() -> void:
+	var f = FileAccess.open(file_location, FileAccess.READ)
+	var _array : Array = []
+	while not f.eof_reached():
+		var line : String = f.get_line()
+		if line == "":
+			pass
+		else:
+			_array.append(line)
+	$FishData.set_meta("TotalFishArray", _array)
+	f.close()
+	print(_array)
+
 
 func reset() -> void: 
 	target.text = target_pool.pick_random()
