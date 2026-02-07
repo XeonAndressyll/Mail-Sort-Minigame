@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://jtoogs5u1d4f"]
 
-[ext_resource type="Script" uid="uid://cta88tu7ts83m" path="res://Fish Data.gd" id="1_7ndhe"]
+[ext_resource type="Script" uid="uid://cta88tu7ts83m" path="res://FishData/Fish Data.gd" id="1_7ndhe"]
 
 [node name="FishData" type="Node"]
 script = ExtResource("1_7ndhe")

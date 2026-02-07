@@ -2,7 +2,7 @@ extends Node
 
 @export var TotalFishArray : Array = []
 
-const filepath : String = "res://Fish-type-mailslot.txt"
+const filepath : String = "res://FishData/Fish-type-mailslot.txt"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
