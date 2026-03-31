@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://dswgy443x72si"]
+
+[ext_resource type="Script" uid="uid://bel5gqaoo1tv5" path="res://Main/Main.gd" id="1_f6irw"]
+[ext_resource type="Script" uid="uid://bd5tbfvfelq1s" path="res://Main/button.gd" id="2_840l0"]
+[ext_resource type="Script" uid="uid://byfy38c6m766e" path="res://Main/new_game_button.gd" id="3_uqrva"]
+[ext_resource type="FontFile" uid="uid://c1qexx04k256s" path="res://Assets/MermaidAstramadea-ALmGM.otf" id="4_840l0"]
+[ext_resource type="Script" uid="uid://dinsjocvd08i8" path="res://Main/target_icon.gd" id="5_uqrva"]
+[ext_resource type="Texture2D" uid="uid://ci5o001ch75l6" path="res://Assets/fishes.png" id="6_kl5kt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txbem"]
+atlas = ExtResource("6_kl5kt")
+region = Rect2(68, 68, 30, 30)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_f6irw")
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("4_840l0")
+theme_override_font_sizes/font_size = 22
+text = "Placehold 1"
+script = ExtResource("2_840l0")
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 1.0
+offset_top = 40.0
+offset_right = 98.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("4_840l0")
+theme_override_font_sizes/font_size = 22
+text = "Placehold 2
+"
+script = ExtResource("2_840l0")
+
+[node name="NewGameButton" type="Button" parent="."]
+offset_left = 195.0
+offset_top = 160.0
+offset_right = 269.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("4_840l0")
+theme_override_font_sizes/font_size = 30
+text = "New Game"
+script = ExtResource("3_uqrva")
+
+[node name="TargetIcon" type="Label" parent="."]
+offset_left = 132.0
+offset_top = 3.0
+offset_right = 172.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("4_840l0")
+script = ExtResource("5_uqrva")
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+oversampling_override = 1.0
+
+[node name="UserInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 108.0
+offset_top = 102.0
+offset_right = 148.0
+offset_bottom = 142.0
+
+[node name="Score" type="Label" parent="UserInterface"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 6.5410004
+anchor_top = 2.631
+anchor_right = 8.518001
+anchor_bottom = 3.5630002
+offset_left = 72.359985
+offset_top = -76.240005
+offset_right = 33.27997
+offset_bottom = -90.520004
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_840l0")
+theme_override_font_sizes/font_size = 22
+
+[node name="Fishes" type="Sprite2D" parent="."]
+position = Vector2(334, 175)
+texture = SubResource("AtlasTexture_txbem")
